@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'static_pages/about'
   root 'events#index'
 
   resources "users"
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   resources "tickets"
   resources "venues"
   resources "categories"
+
+  # Route for the about page
+  get '/about', to: 'static_pages#about'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

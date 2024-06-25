@@ -1,13 +1,25 @@
 <h1>Tickets</h1>
 <%= link_to 'New Ticket', new_ticket_path %>
-<ul>
-  <% @tickets.each do |ticket| %>
-    <li>
-      <%= link_to "Ticket ##{ticket.id}", ticket_path(ticket) %>
-      - Event: <%= ticket.event.title %> 
-      - User: <%= ticket.user.name %> 
-      - Type: <%= ticket.ticket_type %> 
-      - Price: <%= ticket.price %>
-    </li>
-  <% end %>
-</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ticket ID</th>
+      <th>Event</th>
+      <th>User</th>
+      <th>Type</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= link_to "##{ticket.id}", ticket_path(ticket) %></td>
+        <td><%= ticket.event.title %></td>
+        <td><%= ticket.user.name %></td>
+        <td><%= ticket.ticket_type %></td>
+        <td>$<%= ticket.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

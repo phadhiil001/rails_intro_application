@@ -1,15 +1,25 @@
-<h1>Events</h1>
-<%= link_to 'New Event', new_event_path %>
-<%= form_with url: events_path, method: :get, local: true do %>
-  <%= label_tag :search, "Search Events" %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search" %>
-<% end %>
-<ul>
-  <% @events.each do |event| %>
-    <li>
-      <%= link_to event.title, event_path(event) %>
-      - <%= event.start_time %> to <%= event.end_time %>
-    </li>
-  <% end %>
-</ul>
+<h1>All Events</h1>
+<%= link_to 'New Event', new_event_path %><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Category</th>
+      <th>Venue</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.title, event_path(event) %></td>
+        <td><%= event.categories.map(&:name).join(', ') %></td>
+        <td><%= link_to event.venue.name, venue_path(event.venue) %></td>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

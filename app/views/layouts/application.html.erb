@@ -12,7 +12,21 @@
   </head>
 
   <body>
-    <main class="prose container mx-auto mt-28 px-5">
+    <main class="prose container mx-auto  px-5">
+
+      <table>
+        <thead>
+          <tr>
+            <th><%= link_to 'Users', users_path %></th>
+            <th><%= link_to 'Events', events_path %></th>
+            <th><%= link_to 'Categories', categories_path %></th>
+            <th><%= link_to 'Tickets', tickets_path %></th>
+            <th><%= link_to 'Venues', venues_path %></th>
+            <th><%= link_to 'About', about_path %></th>
+          </tr>
+        </thead>
+      </table>
+            
       <%= yield %>
     </main>
   </body>

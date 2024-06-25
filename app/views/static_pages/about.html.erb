@@ -1,0 +1,118 @@
+<h1>About</h1>
+
+<h2>Event Management System</h2>
+
+<h3>Events Dataset:</h3>
+<p>
+  <strong>Data Use:</strong> This dataset manages information about events using the faker gem as the data source. It includes details such as event title, description, start time, end time, and associated tickets. .
+</p>
+<p>
+  <strong>Data Structure:</strong>
+  <ul>
+    <li><strong>Events Table:</strong>
+      <ul>
+        <li><code>id</code>: Integer, primary key</li>
+        <li><code>title</code>: String, event title</li>
+        <li><code>description</code>: Text, event description</li>
+        <li><code>start_time</code>: DateTime, event start time</li>
+        <li><code>end_time</code>: DateTime, event end time</li>
+        <li><code>venue_id</code>: Integer, foreign key to Venue table</li>
+        <li><code>created_at</code>, <code>updated_at</code>: Timestamps</li>
+      </ul>
+    </li>
+    <li><strong>Associations:</strong>
+      <ul>
+        <li>Many-to-one relationship with Venue (each event belongs to one venue)</li>
+        <li>Many-to-many relationship with Categories (each event can belong to multiple categories through Categorization)</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+
+<h3>Categories Dataset:</h3>
+<p>
+  <strong>Data Use:</strong> Manages categories to classify events into different thematic groups.
+</p>
+<p>
+  <strong>Data Structure:</strong>
+  <ul>
+    <li><strong>Categories Table:</strong>
+      <ul>
+        <li><code>id</code>: Integer, primary key</li>
+        <li><code>name</code>: String, category name</li>
+      </ul>
+    </li>
+    <li><strong>Associations:</strong>
+      <ul>
+        <li>Many-to-many relationship with Events (each category can have multiple events through Categorization)</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+
+<h3>Venues Dataset:</h3>
+<p>
+  <strong>Data Use:</strong> Stores information about venues where events are hosted.
+</p>
+<p>
+  <strong>Data Structure:</strong>
+  <ul>
+    <li><strong>Venues Table:</strong>
+      <ul>
+        <li><code>id</code>: Integer, primary key</li>
+        <li><code>name</code>: String, venue name</li>
+        <li><code>address</code>: Text, venue address</li>
+        <li><code>capacity</code>: Integer, venue capacity (optional)</li>
+      </ul>
+    </li>
+    <li><strong>Associations:</strong>
+      <ul>
+        <li>One-to-many relationship with Events (each venue can host multiple events)</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+
+<h3>Tickets Dataset:</h3>
+<p>
+  <strong>Data Use:</strong> Tracks ticket sales and bookings for each event.
+</p>
+<p>
+  <strong>Data Structure:</strong>
+  <ul>
+    <li><strong>Tickets Table:</strong>
+      <ul>
+        <li><code>id</code>: Integer, primary key</li>
+        <li><code>ticket_type</code>: String, type of ticket (e.g., VIP, General Admission)</li>
+        <li><code>price</code>: Decimal, ticket price</li>
+        <li><code>event_id</code>: Integer, foreign key to Event table</li>
+        <li><code>user_id</code>: Integer, foreign key to User table (optional, for tracking ticket buyers)</li>
+      </ul>
+    </li>
+    <li><strong>Associations:</strong>
+      <ul>
+        <li>Many-to-one relationship with Events (each ticket belongs to one event)</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+
+<h2>Integration of Datasets</h2>
+
+<p>
+  <strong>Events and Categories Integration:</strong>
+  <br>
+  Events are categorized using the Categories dataset through the Categorization join table.
+</p>
+
+<p>
+  <strong>Events and Venues Integration:</strong>
+  <br>
+  Events are linked to their respective venue through the <code>venue_id</code> foreign key in the Events table.
+</p>
+
+<p>
+  <strong>Tickets and Users Integration:</strong>
+  <br>
+  Tickets are optionally associated with users through the <code>user_id</code> foreign key in the Tickets table, indicating which user booked or purchased the ticket.
+</p>

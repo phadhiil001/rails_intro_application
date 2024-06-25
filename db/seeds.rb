@@ -12,13 +12,19 @@
 require 'faker'
 
 # Create Users
-10.times do
-  User.create(name: Faker::Name.name, email: Faker::Internet.email, role: ['organizer', 'attendee'].sample)
+500.times do
+  User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    role: ['organizer', 'attendee'].sample)
 end
 
 # Create Venues
-5.times do
-  Venue.create(name: Faker::Company.name, address: Faker::Address.full_address, capacity: Faker::Number.between(from: 50, to: 500))
+12.times do
+  Venue.create(
+  name: Faker::Company.name,
+  address: Faker::Address.full_address,
+  capacity: Faker::Number.between(from: 50, to: 500))
 end
 
 # Create Categories
@@ -32,8 +38,8 @@ end
   event = Event.create(
     title: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph,
-    start_time: Faker::Time.forward(days: 30),
-    end_time: Faker::Time.forward(days: 30, period: :evening),
+    start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short),
+    end_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :short),
     user: User.organizers.sample,
     venue: Venue.all.sample
   )
@@ -42,7 +48,7 @@ end
 
 # Create Tickets
 Event.all.each do |event|
-  rand(1..10).times do
+  rand(1..100).times do
     Ticket.create(
       event: event,
       user: User.attendees.sample,

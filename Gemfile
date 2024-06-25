@@ -73,3 +73,7 @@ gem "faker", "~> 3.4.1"
 gem 'kaminari', '~> 1.2'
 
 gem "tailwindcss-rails", "~> 2.6"
+
+gem 'rails-erd'
+
+gem 'ruby-graphviz', '~> 1.2', '>= 1.2.5'
