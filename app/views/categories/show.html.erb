@@ -1,4 +1,11 @@
 <h1><%= @category.name %></h1>
 
+<h2>Events in <%= @category.name %> Category</h2>
+<ul>
+  <% @category.events.each do |event| %>
+    <li><%= link_to event.title, event_path(event) %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

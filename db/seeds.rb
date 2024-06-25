@@ -11,13 +11,6 @@
 
 require 'faker'
 
-# Clear existing data
-User.destroy_all
-Event.destroy_all
-Venue.destroy_all
-Category.destroy_all
-Ticket.destroy_all
-
 # Create Users
 10.times do
   User.create(name: Faker::Name.name, email: Faker::Internet.email, role: ['organizer', 'attendee'].sample)

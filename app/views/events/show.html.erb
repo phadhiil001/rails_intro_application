@@ -3,11 +3,21 @@
 <p><%= @event.start_time %> to <%= @event.end_time %></p>
 <p>Organized by: <%= link_to @event.user.name, user_path(@event.user) %></p>
 <p>Venue: <%= link_to @event.venue.name, venue_path(@event.venue) %></p>
-<p>Categories: 
+
+<h2>Categories</h2>
+<ul>
   <% @event.categories.each do |category| %>
-    <%= category.name %>
+    <li><%= link_to category.name, category_path(category) %></li>
   <% end %>
-</p>
+</ul>
+
+<h2>Tickets</h2>
+<ul>
+  <% @event.tickets.each do |ticket| %>
+    <li><%= link_to "Ticket ##{ticket.id}", ticket_path(ticket) %></li>
+  <% end %>
+</ul>
+
 <%# <%= image_tag url_for(@event.image) if @event.image.attached? %> %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

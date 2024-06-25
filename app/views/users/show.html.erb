@@ -2,5 +2,25 @@
 <p>Email: <%= @user.email %></p>
 <p>Role: <%= @user.role %></p>
 
+<% if @user.role == 'organizer' %>
+    <h2>Events Organized by <%= @user.name %></h2>
+    <ul>
+    <% @user.events.each do |event| %>
+        <li><%= link_to event.title, event_path(event) %></li>
+    <% end %>
+    </ul>
+
+<% elsif @user.role == 'attendee' %>
+    <h2>Tickets Purchased by <%= @user.name %></h2>
+    <ul>
+    <% @user.tickets.each do |ticket| %>
+        <li>
+        <%= link_to "Ticket ##{ticket.id} for #{ticket.event.title}", ticket_path(ticket) %>
+        </li>
+    <% end %>
+    </ul>
+<% end %>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
