@@ -11,4 +11,9 @@ class Event < ApplicationRecord
 
   # include image
   has_one_attached :image
+
+  # Validation
+  validates :title, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
 end
