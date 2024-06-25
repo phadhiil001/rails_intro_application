@@ -35,7 +35,7 @@ categories.each do |category|
 end
 
 # Create Events
-20.times do
+50.times do
   event = Event.create(
     title: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph,

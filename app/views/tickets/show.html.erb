@@ -1,2 +1,8 @@
-<h1>Tickets#show</h1>
-<p>Find me in app/views/tickets/show.html.erb</p>
+<h1>Ticket #<%= @ticket.id %></h1>
+<p>Event: <%= link_to @ticket.event.title, event_path(@ticket.event) %></p>
+<p>User: <%= link_to @ticket.user.name, user_path(@ticket.user) %></p>
+<p>Type: <%= @ticket.ticket_type %></p>
+<p>Price: <%= @ticket.price %></p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>

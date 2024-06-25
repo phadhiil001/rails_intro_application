@@ -1,2 +1,11 @@
-<h1>Venues#index</h1>
-<p>Find me in app/views/venues/index.html.erb</p>
+<h1>Venues</h1>
+<%= link_to 'New Venue', new_venue_path %>
+<ul>
+  <% @venues.each do |venue| %>
+    <li>
+      <%= link_to venue.name, venue_path(venue) %>
+      - Address: <%= venue.address %>
+      - Capacity: <%= venue.capacity %>
+    </li>
+  <% end %>
+</ul>
