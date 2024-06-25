@@ -70,4 +70,6 @@ end
 gem "faker", "~> 3.4.1"
 
 ## Gemfile for pagination
-gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem 'kaminari', '~> 1.2'
+
+gem "tailwindcss-rails", "~> 2.6"
