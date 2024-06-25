@@ -6,4 +6,7 @@ class User < ApplicationRecord
     # Validation
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
+
+    scope :organizers, -> { where(role: 'organizer') }
+    scope :attendees, -> { where(role: 'attendee') }
 end
