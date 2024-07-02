@@ -4,6 +4,10 @@ class Ticket < ApplicationRecord
     ["created_at", "event_id", "id", "id_value", "price", "ticket_type", "updated_at", "user_id"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["event", "user"]
+  end
+
   belongs_to :event
   belongs_to :user
 
