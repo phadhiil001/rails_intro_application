@@ -11,14 +11,16 @@
   <% end %>
 </ul>
 
+<%= image_tag url_for(@event.image) if @event.image.attached? %>
+
 <h2>Tickets</h2>
 <ul>
-  <% @event.tickets.each do |ticket| %>
+  <% @tickets.each do |ticket| %>
     <li><%= link_to "Ticket ##{ticket.id}", ticket_path(ticket) %></li>
   <% end %>
 </ul>
 
-<%# <%= image_tag url_for(@event.image) if @event.image.attached? %> %>
+<%= paginate @tickets %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

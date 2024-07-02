@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @categories = Category.all # Assuming you have a Category model
+    @categories = Category.all
     @events = Event.all
 
     # Simple search
@@ -13,12 +13,13 @@ class EventsController < ApplicationController
       @events = @events.joins(:categories).where(categories: { id: params[:category_id] })
     end
 
-    @events = @events.page(params[:page]).per(5) 
+    @events = @events.page(params[:page]).per(5)
 
   end
 
   def show
     @event = Event.find(params[:id])
+    @tickets = @event.tickets.page(params[:page]).per(5)
   end
 
   def new
