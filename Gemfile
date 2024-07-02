@@ -79,3 +79,5 @@ gem 'rails-erd'
 gem 'ruby-graphviz', '~> 1.2', '>= 1.2.5'
 
 gem "activeadmin", "~> 3.2"
+
+gem "devise", "~> 4.9"
