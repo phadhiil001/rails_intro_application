@@ -1,6 +1,22 @@
 <h1>All Events</h1>
 <%= link_to 'New Event', new_event_path %><br>
 
+<%= form_with url: events_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :search, 'Search' %>
+    <%= text_field_tag :search, params[:search] %>
+  </div>
+
+  <div>
+    <%= label_tag :category_id, 'Category' %>
+    <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :name, params[:category_id]), include_blank: 'All Categories' %>
+  </div>
+
+  <div>
+    <%= submit_tag 'Search' %>
+  </div>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -23,3 +39,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @events %>

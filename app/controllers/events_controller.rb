@@ -1,6 +1,20 @@
 class EventsController < ApplicationController
   def index
+    @categories = Category.all # Assuming you have a Category model
     @events = Event.all
+
+    # Simple search
+    if params[:search].present?
+      @events = @events.where('title LIKE ?', "%#{params[:search]}%")
+    end
+
+    # Hierarchical search
+    if params[:category_id].present?
+      @events = @events.joins(:categories).where(categories: { id: params[:category_id] })
+    end
+
+    @events = @events.page(params[:page]).per(5) # Pagination
+
   end
 
   def show
