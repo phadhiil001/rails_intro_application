@@ -1,4 +1,13 @@
 class Event < ApplicationRecord
+
+  def self.ransackable_associations(auth_object = nil)
+    ["categories", "categorizations", "tickets", "user", "venue"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "end_time", "id", "id_value", "start_time", "title", "updated_at", "user_id", "venue_id"]
+  end
+
   belongs_to :user
   belongs_to :venue
 
