@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   def index
-    @venues = Venue.page(params[:page]).per(5)
+    @venues = Venue.page(params[:page]).per(10)
   end
 
   def show
