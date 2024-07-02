@@ -14,5 +14,39 @@ ActiveAdmin.register Category do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
+  permit_params :name
+
+  # Index page configuration
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  # Show page configuration
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :created_at
+      row :updated_at
+    end
+  end
+
+  # Form configuration
+  form do |f|
+    f.inputs do
+      f.input :name
+    end
+    f.actions
+  end
+
+  # Filter configuration
+  filter :name
+  filter :created_at
+  filter :updated_at
 end
