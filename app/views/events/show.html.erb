@@ -1,4 +1,4 @@
-<h1><%= @event.title %></h1>
+<h1><%= @event.title.upcase %></h1>
 <p><%= @event.description %></p>
 <p><%= @event.start_time %> to <%= @event.end_time %></p>
 <p>Organized by: <%= link_to @event.user.name, user_path(@event.user) %></p>

@@ -30,7 +30,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.title, event_path(event) %></td>
+        <td><%= link_to event.title.capitalize, event_path(event) %></td>
         <td><%= event.categories.map(&:name).join(', ') %></td>
         <td><%= link_to event.venue.name, venue_path(event.venue) %></td>
         <td><%= event.start_time %></td>

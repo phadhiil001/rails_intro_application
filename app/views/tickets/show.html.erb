@@ -1,5 +1,5 @@
 <h1>Ticket #<%= @ticket.id %></h1>
-<p>Event: <%= link_to @ticket.event.title, event_path(@ticket.event) %></p>
+<p>Event: <%= link_to @ticket.event.title.capitalize, event_path(@ticket.event) %></p>
 <p>User: <%= link_to @ticket.user.name, user_path(@ticket.user) %></p>
 <p>Type: <%= @ticket.ticket_type %></p>
 <p>Price: $<%= @ticket.price %></p>

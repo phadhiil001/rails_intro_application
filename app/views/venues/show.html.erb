@@ -5,7 +5,7 @@
 <h2>Events at <%= @venue.name %></h2>
 <ul>
   <% @venue.events.each do |event| %>
-    <li><%= link_to event.title, event_path(event) %></li>
+    <li><%= link_to event.title.capitalize, event_path(event) %></li>
   <% end %>
 </ul>
 
